@@ -4,6 +4,9 @@
   "license": "MIT",
   "description": "A Node.js automation system for Raspberry Pi & Arduino",
   "main": "server/bin/www.js",
+  "scripts": {
+    "test": "grunt test"
+  },
   "bugs": {
     "url": "https://github.com/paguillama/nodetomation/issues"
   },
