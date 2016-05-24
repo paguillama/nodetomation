@@ -21,6 +21,9 @@ Components are pluggable, they have events and/or actions and can be of any kind
 - Thermometer
 - Fan
 
+### Screenshots
+![Dashboard](https://raw.githubusercontent.com/wiki/paguillama/nodetomation/img/dashboard.png)![Schedules](https://raw.githubusercontent.com/wiki/paguillama/nodetomation/img/schedules.png)![Streaming](https://raw.githubusercontent.com/wiki/paguillama/nodetomation/img/streaming.png)![System](https://raw.githubusercontent.com/wiki/paguillama/nodetomation/img/system.png)
+
 ## Installation guide
 Check out the [development](https://github.com/paguillama/nodetomation/wiki/Installation-guide#development-setup) and [production](https://github.com/paguillama/nodetomation/wiki/Installation-guide#production-setup) setups.
 
