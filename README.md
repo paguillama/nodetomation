@@ -1,4 +1,4 @@
-# Nodetomation
+# Nodetomation [![Build Status](https://circleci.com/gh/paguillama/nodetomation.svg?style=shield)](https://circleci.com/gh/paguillama/nodetomation)
 A Node.js automation system for Raspberry Pi & Arduino.
 
 ## Description
