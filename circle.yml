@@ -1,6 +1,6 @@
 machine:
   node:
-    version: 5.7.0
+    version: 4.2.2
 dependencies:
   pre:
     - npm install -g bower grunt
