@@ -22,7 +22,7 @@ Components are pluggable, they have events and/or actions and can be of any kind
 - Fan
 
 ## Installation guide
-Check out our [installation guide](https://github.com/paguillama/nodetomation/wiki/Installation-guide)
+Check out the [development](https://github.com/paguillama/nodetomation/wiki/Installation-guide#development-setup) and [production](https://github.com/paguillama/nodetomation/wiki/Installation-guide#production-setup) setups.
 
 ## Development
 Are you a developer? Our [development section](https://github.com/paguillama/nodetomation/wiki/Development) can give you some valuable information about technologies, main grunt tasks, and roadmap.
