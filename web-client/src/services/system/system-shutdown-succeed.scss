@@ -1,0 +1,19 @@
+.nodeto-system-shutdown-succeed__title {
+  color: $brand-primary;
+  font-size: 1.2em;
+  text-align: center;
+
+  .nodeto-system-shutdown-succeed__title-prefix {
+    font-weight: bold;
+  }
+
+  .nodeto-system-shutdown-succeed__brand-name {
+    font-size: 2em;
+    font-family: 'Calligraffitti', cursive;
+    white-space: nowrap;
+  }
+}
+
+.nodeto-system-shutdown-succeed__description {
+  margin-top: 2em;
+}

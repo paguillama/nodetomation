@@ -1,0 +1,15 @@
+.nodeto-streaming {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%;
+
+  .nodeto-streaming__panel-heading {
+    flex-shrink: 0;
+  }
+
+  .nodeto-streaming__panel-body {
+    flex-grow: 1;
+    overflow: auto;
+  }
+}

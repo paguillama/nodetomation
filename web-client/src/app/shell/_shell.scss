@@ -1,0 +1,38 @@
+// IMPORTS
+@import "./dashboard/dashboard";
+@import "./schedules/schedules";
+@import "./system/system";
+@import "./streaming/streaming";
+@import "./about/about";
+
+.nodeto-shell__body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .nodeto-shell__nav {
+    flex-shrink: 0;
+  }
+
+  .nodeto-shell__section-container {
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+    padding-top: $grid-gutter-width / 2;
+    padding-left: $grid-gutter-width / 2;
+    padding-right: $grid-gutter-width / 2;
+    overflow: auto;
+
+    .nodeto-shell__section {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+}
+
+.nodeto-shell__title {
+  font-family: 'Calligraffitti', cursive;
+  white-space: nowrap;
+}

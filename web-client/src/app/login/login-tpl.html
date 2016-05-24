@@ -1,0 +1,33 @@
+<div class="nodeto-login__body">
+    <nodeto-message></nodeto-message>
+    <div class="container-fluid nodeto-login__section-container">
+        <section class="row-fluid nodeto-login__section">
+            <h1 class="nodeto-login__title">{{loginCtrl.txt.appName}}</h1>
+
+            <!-- AUTH FORM -->
+            <form ng-submit="loginCtrl.sendCredentials()">
+
+                <!-- USERNAME -->
+                <fieldset class="form-group">
+                    <label for="username" class="sr-only">{{loginCtrl.txt.username}}</label>
+                    <input type="username" class="form-control" id="username"
+                           required="" autofocus=""
+                           placeholder="{{loginCtrl.txt.username}}"
+                           ng-model="loginCtrl.user.username">
+                </fieldset>
+
+                <!-- PASSWORD -->
+                <fieldset class="form-group">
+                    <label for="password" class="sr-only">{{loginCtrl.txt.password}}</label>
+                    <input type="password" class="form-control" id="password"
+                           required="" autofocus=""
+                           placeholder="{{loginCtrl.txt.password}}"
+                           ng-model="loginCtrl.user.password">
+                </fieldset>
+
+                <button type="submit" class="btn btn-lg btn-primary btn-block">{{loginCtrl.txt.signIn}}</button>
+
+            </form>
+        </section>
+    </div>
+</div>

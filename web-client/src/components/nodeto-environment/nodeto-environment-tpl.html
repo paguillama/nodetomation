@@ -1,0 +1,27 @@
+<div class="nodeto-environment__container">
+  <div class="nodeto-environment__environment-container">
+    <div class="nodeto-environment__component-container">
+      <div class="nodeto-environment__component"
+           ng-repeat="component in ctrl.data"
+           ng-class="{'nodeto-environment__component--selected': ctrl.selectedComponent && ctrl.selectedComponent.key === component.key}"
+           ng-style="{top: component.coordinates.y + '%',
+                      left: component.coordinates.x + '%'}">
+        <!-- TODO - assets namespacing -->
+        <img class="nodeto-environment__component-image"
+             ng-src="{{ctrl.componentsPath + '/' + component.typeKey + '.svg'}}"
+             ng-click="ctrl.select(component)">
+        <div class="nodeto-environment__component-default-action"
+             ng-class="{'nodeto-environment__component-default-action--active': component.state.value === true,
+                        'nodeto-environment__component-default-action--not-active': component.state.value === false}"
+             ng-click="ctrl.defaultAction(component)"
+             ng-if="component.defaultAction"></div>
+        <div class="nodeto-environment__component-value-container"
+             ng-if="component.state.value !== true && component.state.value !== false && component.state.value">
+          <div class="nodeto-environment__component-value">
+            {{component.state.value}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

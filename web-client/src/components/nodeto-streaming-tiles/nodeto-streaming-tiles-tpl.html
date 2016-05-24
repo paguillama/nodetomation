@@ -1,0 +1,8 @@
+<div class="row nodeto-streaming-tiles__streaming-row"
+     ng-repeat="row in ctrl.rows">
+  <div class="nodeto-streaming-tiles__streaming-column"
+       ng-class="{'col-sm-{{column.value}}': true }"
+       ng-repeat="column in row.columns">
+    <nodeto-video-streaming config="column.config"></nodeto-video-streaming>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+$nodeto-environment__component--size: 60px;
+$nodeto-environment__default-action--transparency: 0.1;
+
+.nodeto-environment__container {
+  width: 100%;
+
+  .nodeto-environment__environment-container {
+    height: 250px;
+    width: 100%;
+    padding: $nodeto-environment__component--size / 2;
+    border: 1px dashed $gray-light;
+    background: $gray-lighter;
+    border-radius: 10px;
+
+    .nodeto-environment__component-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+
+      .nodeto-environment__component {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        height: $nodeto-environment__component--size;
+        width: $nodeto-environment__component--size;
+        padding: $nodeto-environment__component--size / 20;
+        transition: padding $nodeto__short-transition-duration;
+
+        &.nodeto-environment__component--selected {
+          padding: $nodeto-environment__component--size / 10;
+          border: 3px dotted $brand-primary;
+          border-radius: 50%;
+        }
+
+        .nodeto-environment__component-image {
+          height: 100%;
+          width: 100%;
+        }
+
+        .nodeto-environment__component-default-action {
+          position: absolute;
+          height: $nodeto-environment__component--size / 2;
+          width: $nodeto-environment__component--size / 2;
+          top: 50%;
+          left: 50%;
+          border-radius: 50%;
+          background-color: $gray-dark;
+          transition: background-color $nodeto__short-transition-duration;
+
+          &.nodeto-environment__component-default-action--active {
+            background-color: transparentize($brand-success, $nodeto-environment__default-action--transparency);
+          }
+
+          &.nodeto-environment__component-default-action--not-active {
+            background-color: transparentize($brand-danger, $nodeto-environment__default-action--transparency);
+          }
+        }
+
+        .nodeto-environment__component-value-container {
+          position: absolute;
+          height: $nodeto-environment__component--size / 2;
+          width: $nodeto-environment__component--size / 2;
+          top: 50%;
+          left: 50%;
+          border-radius: 50%;
+          background-color: $brand-primary;
+
+          .nodeto-environment__component-value {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

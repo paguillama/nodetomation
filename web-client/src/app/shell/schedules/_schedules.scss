@@ -1,0 +1,26 @@
+.nodeto-schedules {
+  .nodeto-schedules__schedule-task-key {
+    padding-top: 7px;
+  }
+
+  .nodeto-schedules__schedule-table .nodeto-schedules__schedule-table-cell {
+    vertical-align: middle;
+  }
+
+  .nodeto-schedules__schedule-table-options {
+    width: 1%;
+    text-align: center;
+  }
+
+  .nodeto-schedules__ok-icon {
+    color: $brand-success;
+  }
+
+  .nodeto-schedules__remove-icon {
+    color: $brand-danger;
+  }
+
+  .cron-select {
+    width: auto;
+  }
+}

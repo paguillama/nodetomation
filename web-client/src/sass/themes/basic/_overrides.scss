@@ -1,0 +1,15 @@
+.nodeto__app {
+
+  .panel-heading {
+    color: $brand-primary;
+  }
+
+  .navbar-inverse .navbar-nav > li > a {
+    transition: all $nodeto__short-transition-duration,;
+  }
+
+  .dropdown-menu > li > a {
+    transition: all $nodeto__short-transition-duration;
+  }
+
+}

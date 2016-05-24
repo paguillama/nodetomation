@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>Nodetomation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
+    <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
+
+    <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
+    <script type="text/javascript" src="<%= file %>"></script><% }); %>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body class="nodeto__app">
+    <div ui-view="main"></div>
+  </body>
+</html>

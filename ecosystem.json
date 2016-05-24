@@ -1,0 +1,13 @@
+{
+  "apps": [{
+    "name": "nodetomation",
+    "script": "server/dist/bin/www.js",
+    "env": {
+      "NODE_ENV": "production",
+      "NODETO_AUTH_SECRET": "M?*HX{?xe0\"9|'k['8v_:s28F&)vc3",
+      "NODETO_AUTH_SALT": "JZq<&!9GO-!FEPPp|2Me>i]2j0ZrpK",
+      "NODETO_SHUTDOWN_USERNAME": "pi",
+      "NODETO_SHUTDOWN_PASSWORD": "raspberry"
+    }
+  }]
+}

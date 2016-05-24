@@ -1,0 +1,202 @@
+// USERS
+db.users.remove({});
+db.users.insert({
+    username: 'admin',
+    password: 'aa8c2ef1e01519767791b7113e0e7ef37fe455ab21836b0dadf0607fee5ccb3a' // admin
+});
+
+// BOARDS
+db.boards.remove({});
+db.boards.insert({
+  type: 'arduino',
+  key: 'central-board'
+});
+
+// COMPONENTS
+db.components.remove({});
+db.components.insert({
+  name: 'Light',
+  typeKey: 'light',
+  key: 'central-light',
+  pin: 9,
+  coordinates: {
+    x: 50,
+    y: 50
+  }
+});
+db.components.insert({
+  name: 'Intractor',
+  typeKey: 'fan',
+  key: 'central-intractor',
+  pin: 10,
+  coordinates: {
+    x: 0,
+    y: 90
+  }
+});
+db.components.insert({
+  name: 'Extractor',
+  typeKey: 'fan',
+  key: 'central-extractor',
+  pin: 11,
+  coordinates: {
+    x: 100,
+    y: 10
+  }
+});
+db.components.insert({
+  name: 'Irrigator',
+  typeKey: 'irrigator',
+  key: 'central-irrigator',
+  pin: 12,
+  coordinates: {
+    x: 100,
+    y: 90
+  }
+});
+db.components.insert({
+  name: 'Thermometer',
+  typeKey: 'thermometer',
+  key: 'central-thermometer',
+  controller: 'BMP180',
+  freq: '5000',
+  coordinates: {
+    x: 0,
+    y: 10
+  }
+});
+db.components.insert({
+  "name" : "Main camera",
+  "typeKey" : "camera",
+  "key" : "main-camera",
+  "url" : "http://localhost:8080/?action=stream",
+  "streamerCommand" : "cd /opt/mjpg-streamer/mjpg-streamer-experimental/ && export LD_LIBRARY_PATH=. && ./mjpg_streamer -i \"input_uvc.so -y\" -o \"output_http.so -w ./www\"",
+  "coordinates" : {
+      "x" : 50,
+      "y" : 0
+    }
+  }
+);
+// Raspberry pi
+// db.components.insert({
+//   "name" : "Main camera",
+//   "typeKey" : "camera",
+//   "key" : "main-camera",
+//   "url" : "http://localhost:8080/?action=stream",
+//   "streamerCommand" : "modprobe bcm2835-v4l2 && export LD_LIBRARY_PATH=/home/pi/Desktop/mjpg-streamer-r63 && $LD_LIBRARY_PATH/mjpg_streamer -i \"$LD_LIBRARY_PATH/input_uvc.so -y\" -o \"$LD_LIBRARY_PATH/output_http.so -w $LD_LIBRARY_PATH/www\"",
+//   "coordinates" : {
+//       "x" : 50,
+//       "y" : 0
+//     }
+//   }
+// );
+
+// ACTIONS
+db.actions.remove({});
+db.actions.insert({
+  name: 'Turn on light',
+  key: 'turn-on-light',
+	componentActions: [{
+		componentKey: 'central-light',
+		actionKey: 'turn-on'
+  }]
+});
+db.actions.insert({
+  name: 'Turn off light',
+  key: 'turn-off-light',
+	componentActions: [{
+		componentKey: 'central-light',
+		actionKey: 'turn-off'
+	}]
+});
+db.actions.insert({
+  name: 'Turn on fans',
+  key: 'turn-on-fans',
+	componentActions: [{
+		componentKey: 'central-extractor',
+		actionKey: 'turn-on'
+	}, {
+		componentKey: 'central-intractor',
+		actionKey: 'turn-on'
+  }]
+});
+db.actions.insert({
+  name: 'Turn off fans',
+  key: 'turn-off-fans',
+	componentActions: [{
+		componentKey: 'central-extractor',
+		actionKey: 'turn-off'
+	}, {
+		componentKey: 'central-intractor',
+		actionKey: 'turn-off'
+	}]
+});
+db.actions.insert({
+  name: 'Irrigate',
+  key: 'irrigate',
+	componentActions: [{
+		componentKey: 'central-irrigator',
+		actionKey: 'turn-on',
+		actionOptions: {
+		  seconds: 15
+		}
+	}]
+});
+
+// SCHEDULES
+db.schedules.remove({});
+db.schedules.insert({
+  name: 'Light schedule',
+  key: 'light-schedule',
+	tasks: [{
+    key: 'light-schedule-turn-on',
+    cronTime: '0 6 * * *',
+    actionKey: 'turn-on-light'
+  }, {
+    key: 'light-schedule-turn-off',
+    cronTime: '0 18 * * *',
+    actionKey: 'turn-off-light'
+  }]
+});
+db.schedules.insert({
+  name: 'Irrigation',
+  key: 'irrigation',
+	tasks: [{
+    key: 'irrigation-turn-on',
+    cronTime: '30 8 * * *',
+    actionKey: 'irrigate'
+  }]
+});
+
+// EVENTS
+db.events.remove({});
+db.events.insert({
+  name: 'Turn on fans above temperature',
+  key: 'turn-on-fans-above-temperature',
+	componentEvents: [{
+		componentKey: 'central-thermometer',
+		eventKey: 'temperature-more-than',
+		eventConfig: {
+		  value: 27,
+		  triggerAfterBelow: 24
+		}
+	}],
+	actions: [{
+	  actionKey: 'turn-on-fans'
+	}]
+});
+db.events.insert({
+  name: 'Turn off fans below temperature',
+  key: 'turn-off-fans-below-temperature',
+	componentEvents: [{
+		componentKey: 'central-thermometer',
+		eventKey: 'temperature-less-than',
+		eventConfig: {
+		  value: 24,
+		  triggerAfterAbove: 27
+		}
+	}],
+	actions: [{
+	  actionKey: 'turn-off-fans'
+	}]
+});

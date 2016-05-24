@@ -1,0 +1,37 @@
+.nodeto-message {
+  position: fixed;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+  max-width: 80%;
+  color: $gray-lighter;
+  font-size: 1.2em;
+
+  .nodeto-message__message {
+    display: inline-block;
+    background-color: $gray-darker;
+    transform: translateX(-50%);
+    padding: 0.3em 1em;
+    border-radius: 1em;
+    box-shadow: $gray-darker 3px 3px 6px 0px;
+    margin-bottom: 0.5em;
+
+    &.nodeto-message__message--info {
+      background-color: $brand-info;
+    }
+
+    &.nodeto-message__message--success {
+      background-color: $brand-success;
+    }
+
+    &.nodeto-message__message--warning {
+      background-color: $brand-warning;
+    }
+
+    &.nodeto-message__message--danger {
+      background-color: $brand-danger;
+    }
+  }
+}

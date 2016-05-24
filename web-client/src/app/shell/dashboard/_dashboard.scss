@@ -1,0 +1,26 @@
+.nodeto-dashboard {
+
+  .nodeto-dashboard__component {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+
+    .nodeto-dashboard__component-name {
+      flex-grow: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .nodeto-dashboard__footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .nodeto-dashboard__component-description-title {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-top: 10px;
+  }
+}

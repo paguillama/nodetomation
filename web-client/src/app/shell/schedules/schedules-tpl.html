@@ -1,0 +1,57 @@
+<div class="nodeto-schedules">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Schedules
+    </div>
+    <div class="panel-body"
+         ng-if="ctrl.schedules && !ctrl.schedules.length">
+      There are no schedules yet
+    </div>
+    <table class="table table-hover table-striped nodeto-schedules__schedule-table"
+           ng-if="ctrl.schedules && ctrl.schedules.length">
+      <tr>
+        <th>Name</th>
+        <th>Tasks</th>
+        <th>Options</th>
+      </tr>
+      <tbody ng-repeat="schedule in ctrl.schedules">
+      <tr ng-repeat="task in schedule.tasks">
+        <td class="nodeto-schedules__schedule-table-cell"
+            ng-if="$first"
+            rowspan="{{schedule.tasks.length}}">
+          {{schedule.name}}
+        </td>
+        <td class="nodeto-schedules__schedule-table-cell">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label class="col-md-2 control-label"
+                     for="nodeto-schedule-task-action-key-{{task.key}}">Action</label>
+              <div class="col-md-10 nodeto-schedules__schedule-task-key">
+                      <span id="nodeto-schedule-task-action-key-{{task.key}}">
+                        {{task.actionKey}}
+                      </span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label">Timing</label>
+              <div class="col-md-10">
+                <cron-selection output="task.cronTime"
+                                init="task.cronTime"></cron-selection>
+              </div>
+            </div>
+          </form>
+        </td>
+
+        <td class="nodeto-schedules__schedule-table-cell nodeto-schedules__schedule-table-options"
+            ng-if="$first"
+            rowspan="{{schedule.tasks.length}}">
+                      <span class="glyphicon glyphicon-ok nodeto-schedules__ok-icon"
+                            ng-click="ctrl.updateSchedule(schedule)"></span>
+                      <span class="glyphicon glyphicon-remove nodeto-schedules__remove-icon"
+                            ng-click="ctrl.removeSchedule(schedule.key)"></span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

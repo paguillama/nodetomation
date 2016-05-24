@@ -1,0 +1,9 @@
+<div class="nodeto-message">
+  <div class="nodeto-message__message-container"
+       ng-repeat="message in ctrl.messages">
+    <div class="nodeto-message__message"
+         ng-class="{'nodeto-message__message--{{message.type}}': message.type}">
+      {{message.text}}
+    </div>
+  </div>
+</div>

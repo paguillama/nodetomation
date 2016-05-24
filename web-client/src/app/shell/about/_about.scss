@@ -1,0 +1,19 @@
+.nodeto-about {
+  .nodeto-about__about-panel {
+    position: relative;
+
+    .nodeto-about__title {
+      color: $brand-primary;
+      margin-top: 0;
+    }
+
+    .nodeto-about__github-forkme {
+      position: absolute;
+      top: 0;
+      right: 0;
+      border: 0;
+      max-height: 100%;
+      max-width: 20%;
+    }
+  }
+}

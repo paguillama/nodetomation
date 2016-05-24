@@ -1,0 +1,55 @@
+<div class="nodeto-dashboard">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      {{ 'texts.dashboard' | translate }}
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div>
+            <nodeto-environment data="ctrl.environment.data"
+                            config="ctrl.environment.config"></nodeto-environment>
+          </div>
+          <div>
+            <div class="nodeto-dashboard__component-description"
+                 ng-if="ctrl.selectedComponent">
+              <div class="nodeto-dashboard__component-description-title">Name:</div>
+              <div>{{ctrl.selectedComponent.name}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="row">
+            <div class="col-sm-4"
+                 ng-repeat="panelComponent in ctrl.panelComponents"
+                 ng-if="panelComponent.component.actions && panelComponent.component.actions.length">
+              <div class="nodeto-dashboard__component">
+                <div class="nodeto-dashboard__component-name">
+                  {{panelComponent.component.name}}
+                </div>
+                <div class="nodeto-dashboard__component-switch">
+                  <nodeto-switch data="panelComponent.data"
+                             config="panelComponent.config"></nodeto-switch>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <div class="nodeto-dashboard__footer">
+        <button class="btn btn-success"
+                ng-click="ctrl.turnAll(true)"
+                ng-hide="ctrl.hideTurnOnAll">
+          {{ 'texts.turnOnAll'  | translate }}
+        </button>
+        <button class="btn btn-danger"
+                ng-click="ctrl.turnAll(false)"
+                ng-hide="ctrl.hideTurnOffAll">
+          {{ 'texts.turnOffAll'  | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

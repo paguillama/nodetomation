@@ -1,0 +1,20 @@
+@function nodeto-contrast($color) {
+  @if (lightness($color) > 50) {
+    @return #000000;
+  } @else {
+    @return #ffffff;
+  }
+}
+
+@function nodeto-lightness($color, $lightness) {
+  // TODO - make it recursive until reach the $lightness value
+  $difference: lightness($color) - $lightness;
+  @if ($difference > 0) {
+    @return darken($color, $difference);
+  } @else {
+    @if ($difference < 0) {
+      @return lighten($color, -$difference);
+    }
+  }
+  @return $color;
+}

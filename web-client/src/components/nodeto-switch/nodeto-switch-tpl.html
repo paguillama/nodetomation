@@ -1,0 +1,13 @@
+<div class="nodeto-switch__container">
+  <span class="nodeto-switch__switch"
+        ng-click="ctrl.change()"
+        ng-class="{'nodeto-switch__switch--checked': ctrl.data.value,
+                   'nodeto-switch__switch--disabled': ctrl.config.disabled,
+                   'nodeto-switch__switch--wide': ctrl.config.wide }">
+    <small></small>
+    <span class="nodeto-switch__text nodeto-switch__on-text"
+          ng-if="ctrl.data.value">{{ctrl.config.onLabel}}</span>
+    <span class="nodeto-switch__text nodeto-switch__off-text"
+          ng-if="!ctrl.data.value">{{ctrl.config.offLabel}}</span>
+  </span>
+</div>

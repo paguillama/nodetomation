@@ -1,0 +1,53 @@
+.nodeto-system {
+
+  .nodeto-system__system-panel-footer {
+    text-align: right;
+  }
+
+  .nodeto-system__footer-button {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    position: relative;
+
+    .nodeto-system__footer-button-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+  }
+
+  .nodeto-system__log-panel-heading {
+    display: flex;
+
+    .nodeto-system__log-heading-title {
+      flex-grow: 1;
+    }
+
+    .nodeto-system__log-heading-button-container {
+      padding-left: 0.5em;
+
+      .nodeto-system__log-heading-button {
+        width: 2em;
+        height: 2em;
+        border-radius: 50%;
+        position: relative;
+
+        .nodeto-system__log-heading-button-icon {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+        }
+      }
+    }
+  }
+
+  .nodeto-system__log-panel-body {
+    padding: 0;
+    // TODO use flex box to fill the space instead of max-height
+    max-height: 300px;
+    overflow: auto;
+  }
+}

@@ -1,0 +1,72 @@
+<div class="nodeto-system">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      System
+    </div>
+    <div class="panel-body">
+      <div>
+        System time: <span>{{ctrl.status.formattedTime}}</span>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <div class="nodeto-system__system-panel-footer">
+        <button class="btn btn-danger nodeto-system__footer-button"
+                ng-click="ctrl.shutdown()">
+          <span class="nodeto-system__footer-button-icon glyphicon glyphicon-off"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default"
+       ng-if="ctrl.log">
+    <div class="panel-heading
+                nodeto-system__log-panel-heading">
+      <div class="nodeto-system__log-heading-title">Logging</div>
+      <div class="nodeto-system__log-heading-label">{{ctrl.log.label}}</div>
+      <div class="nodeto-system__log-heading-button-container">
+        <button class="btn
+                       btn-default
+                       nodeto-system__log-heading-button"
+                ng-click="ctrl.previousLog()"
+                ng-disabled="ctrl.logIndex === 0">
+          <span class="nodeto-system__log-heading-button-icon glyphicon glyphicon-chevron-left"></span>
+        </button>
+      </div>
+      <div class="nodeto-system__log-heading-button-container">
+        <button class="btn
+                       btn-default
+                       nodeto-system__log-heading-button"
+                ng-click="ctrl.nextLog()"
+                ng-disabled="ctrl.nextDisabled">
+          <span class="glyphicon
+                       glyphicon-chevron-right
+                       nodeto-system__log-heading-button-icon"></span>
+        </button>
+      </div>
+
+    </div>
+    <div class="panel-body
+                nodeto-system__log-panel-body">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Level</th>
+          <th>Message</th>
+          <th>Time</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="logItem in ctrl.log.logs"
+          ng-class="{'danger': logItem.level === 'error',
+                     'warning': logItem.level === 'warn',
+                     'info': logItem.level === 'info'}">
+          <td>{{logItem.level | uppercase}}</td>
+          <td>{{logItem.message}}</td>
+          <td>{{logItem.timeLabel}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

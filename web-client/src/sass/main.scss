@@ -1,0 +1,25 @@
+@import "functions";
+
+// Theme defaults
+@import "themes/basic/defaults";
+
+// Imports bootstrap default values
+@import "bootstrap-defaults";
+
+// Imports bootstrap css
+@import "../../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+
+// Overrides bootstrap
+@import "bootstrap-overrides";
+
+// Our variables
+@import "variables";
+
+// Theme
+@import "themes/basic/overrides";
+
+// Fonts
+@import "fonts";
+
+// Application
+@import "../index";

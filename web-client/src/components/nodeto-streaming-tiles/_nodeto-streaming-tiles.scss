@@ -1,0 +1,12 @@
+.nodeto-streaming-tiles__streaming-row {
+
+  .nodeto-streaming-tiles__streaming-column {
+    padding-bottom: $grid-gutter-width;
+  }
+
+  &:last-child {
+    .nodeto-streaming-tiles__streaming-column {
+      padding-bottom: 0;
+    }
+  }
+}

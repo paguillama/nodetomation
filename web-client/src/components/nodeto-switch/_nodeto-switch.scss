@@ -1,0 +1,81 @@
+$nodeto-switch__width: 62px;
+$nodeto-switch__width--wide: 92px;
+$nodeto-switch__button-size: 30px;
+
+.nodeto-switch__container {
+  display: inline-block;
+
+  .nodeto-switch__switch {
+    background: white;
+    color: white;
+    border: 1px solid #dfdfdf;
+    position: relative;
+    display: inline-block;
+    box-sizing: content-box;
+    overflow: visible;
+    width: $nodeto-switch__width;
+    height: $nodeto-switch__button-size;
+    padding: 0px;
+    margin: 0px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: rgb(223, 223, 223) 0px 0px 0px 0px inset;
+    transition: 0.3s ease-out all;
+    top: -1px;
+
+    background: $brand-danger;
+    border-color: darken($brand-danger, 10%);
+  }
+  /*adding a wide width for larger switch text*/
+  .nodeto-switch__switch--wide {
+    width: 80px;
+  }
+
+  .nodeto-switch__switch small {
+    background: #fff;
+    border-radius: 100%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    width: $nodeto-switch__button-size;
+    height: $nodeto-switch__button-size;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transition: 0.3s ease-out all;
+  }
+
+  .nodeto-switch__switch--checked {
+    background: $brand-success;
+    border-color: darken($brand-success, 10%);
+  }
+  .nodeto-switch__switch--checked small {
+    left: $nodeto-switch__width - $nodeto-switch__button-size;
+  }
+  /*wider switch text moves small further to the right*/
+  .nodeto-switch__switch--wide.nodeto-switch__switch--checked small {
+    left: $nodeto-switch__width--wide - $nodeto-switch__button-size;
+  }
+  /*styles for switch-text*/
+  .nodeto-switch__switch .nodeto-switch__text {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display:block;
+    z-index: 0;
+    width: 50%;
+    text-align: center;
+  }
+
+  .nodeto-switch__switch .nodeto-switch__off-text {
+    left: 50%;
+  }
+
+  .nodeto-switch__switch .nodeto-switch__on-text {
+    left: 0;
+  }
+
+  .nodeto-switch__switch--disabled {
+    opacity: .50;
+    cursor: not-allowed;
+  }
+
+}

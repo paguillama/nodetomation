@@ -1,0 +1,57 @@
+<div class="nodeto-shell__body">
+  <nav class="navbar
+              navbar-inverse
+              nodeto-shell__nav">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button class="navbar-toggle"
+                type="button"
+                ng-click="shellCtrl.isCollapsed = !shellCtrl.isCollapsed">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand nodeto-shell__title"
+           href="#"
+           ui-sref="dashboard">{{shellCtrl.title}}</a>
+      </div>
+      <div class="navbar-collapse" ng-class="{'collapse': shellCtrl.isCollapsed}">
+        <ul class="nav navbar-nav">
+          <li ng-class="{'active': shellCtrl.currentState === 'dashboard'}">
+            <a ui-sref="dashboard">{{ 'texts.dashboard' | translate }} <span class="sr-only">(current)</span></a>
+          </li>
+          <li ng-class="{'active': shellCtrl.currentState === 'schedules'}">
+            <a ui-sref="schedules">{{ 'texts.schedules' | translate }}</a>
+          </li>
+          <li ng-class="{'active': shellCtrl.currentState === 'streaming'}">
+            <a ui-sref="streaming">Streaming</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown" ng-class="{ open : shellCtrl.selectedDropdown === 'profile' }"
+              ng-click="shellCtrl.selectDropdown('profile')">
+            <a href="" class="dropdown-toggle">{{::shellCtrl.username}} <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li ng-class="{'active': shellCtrl.selectedDropdown === 'profile' && shellCtrl.currentState === 'system'}">
+                <a ui-sref="system">System</a></li>
+              <li ng-class="{'active': shellCtrl.selectedDropdown === 'profile' && shellCtrl.currentState === 'about'}">
+                <a ui-sref="about">About</a></li>
+              <li><a ui-sref="login" ng-click="shellCtrl.logout()">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <nodeto-message></nodeto-message>
+  <div class="container-fluid nodeto-shell__section-container">
+    <section ui-view="detail" class="nodeto-shell__section">
+    </section>
+  </div>
+  <footer>
+    <div ng-if="shellCtrl.message" class="alert alert-{{shellCtrl.message.type}}">
+      <strong>{{ shellCtrl.message.title }}</strong> {{ shellCtrl.message.text }}
+    </div>
+  </footer>
+</div>
