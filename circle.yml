@@ -1,6 +1,9 @@
-test:
-  pre:
-    - bower install
 machine:
   node:
     version: 5.7.0
+dependencies:
+  pre:
+    - npm install -g bower
+test:
+  pre:
+    - bower install
