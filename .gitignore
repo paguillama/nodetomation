@@ -8,10 +8,7 @@
 **/node_modules
 **/bower_components
 
-server/dist/
-
 web-client/build/
 web-client/compile/
-web-client/dist/
 
 docs/
