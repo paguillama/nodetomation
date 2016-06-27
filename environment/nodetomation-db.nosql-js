@@ -70,7 +70,7 @@ db.components.insert({
   "typeKey" : "camera",
   "key" : "main-camera",
   "url" : "http://localhost:8080/?action=stream",
-  "streamerCommand" : "cd /opt/mjpg-streamer/mjpg-streamer-experimental/ && export LD_LIBRARY_PATH=. && ./mjpg_streamer -i \"input_uvc.so -y\" -o \"output_http.so -w ./www\"",
+  "startCommand" : "cd /opt/mjpg-streamer/mjpg-streamer-experimental/ && export LD_LIBRARY_PATH=. && ./mjpg_streamer -i \"input_uvc.so -y\" -o \"output_http.so -w ./www\"",
   "coordinates" : {
       "x" : 50,
       "y" : 0
@@ -83,7 +83,7 @@ db.components.insert({
 //   "typeKey" : "camera",
 //   "key" : "main-camera",
 //   "url" : "http://localhost:8080/?action=stream",
-//   "streamerCommand" : "modprobe bcm2835-v4l2 && export LD_LIBRARY_PATH=/home/pi/Desktop/mjpg-streamer-r63 && $LD_LIBRARY_PATH/mjpg_streamer -i \"$LD_LIBRARY_PATH/input_uvc.so -y\" -o \"$LD_LIBRARY_PATH/output_http.so -w $LD_LIBRARY_PATH/www\"",
+//   "startCommand" : "modprobe bcm2835-v4l2 && export LD_LIBRARY_PATH=/home/pi/Desktop/mjpg-streamer-r63 && $LD_LIBRARY_PATH/mjpg_streamer -i \"$LD_LIBRARY_PATH/input_uvc.so -y\" -o \"$LD_LIBRARY_PATH/output_http.so -w $LD_LIBRARY_PATH/www\"",
 //   "coordinates" : {
 //       "x" : 50,
 //       "y" : 0

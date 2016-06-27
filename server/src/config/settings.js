@@ -10,7 +10,8 @@ let settings = {
       host: 'mongodb://localhost:27017/nodetomation-db'
     },
     routing: {
-      apiBaseUrl: '/api'
+      apiBaseUrl: '/api',
+      streamingBaseUrl: '/streaming'
     },
     logging: {
       expirationDays: 7,

@@ -3,14 +3,23 @@
 let componentsRoute = require('./components'),
   loginRoute = require('./login'),
   schedulesRoute = require('./schedules'),
+  apiStreamingRoute = require('./api-streaming'),
   streamingRoute = require('./streaming'),
   systemRoute = require('./system'),
   logsRoute = require('./logs'),
-  apiBaseUrl = require('../config').configuration.routing.apiBaseUrl;
+  routing = require('../config').configuration.routing;
 
-module.exports[apiBaseUrl + '/v1/system'] = systemRoute;
-module.exports[apiBaseUrl + '/v1/logs'] = logsRoute;
-module.exports[apiBaseUrl + '/v1/login'] = loginRoute;
-module.exports[apiBaseUrl + '/v1/components'] = componentsRoute;
-module.exports[apiBaseUrl + '/v1/schedules'] = schedulesRoute;
-module.exports[apiBaseUrl + '/v1/streaming'] = streamingRoute;
+let routes = {};
+
+// API
+routes[routing.apiBaseUrl + '/v1/system'] = systemRoute;
+routes[routing.apiBaseUrl + '/v1/logs'] = logsRoute;
+routes[routing.apiBaseUrl + '/v1/login'] = loginRoute;
+routes[routing.apiBaseUrl + '/v1/components'] = componentsRoute;
+routes[routing.apiBaseUrl + '/v1/schedules'] = schedulesRoute;
+routes[routing.apiBaseUrl + '/v1/streaming'] = apiStreamingRoute;
+
+// STREAMING
+routes[routing.streamingBaseUrl + '/v1/'] = streamingRoute;
+
+module.exports = routes;

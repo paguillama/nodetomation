@@ -1,12 +1,8 @@
 .nodeto-video-streaming {
   text-align: center;
 
-  .nodeto-video-streaming__canvas {
+  .nodeto-video-streaming__img {
     border-radius: 10px;
     width: 100%;
-
-    &.nodeto-video-streaming__canvas--empty {
-      width: auto;
-    }
   }
 }

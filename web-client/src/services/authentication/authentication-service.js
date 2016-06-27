@@ -71,4 +71,7 @@ export default class NodetoAuthenticationService {
     this.NodetoStorageService.set(this.AUTH_USER_USERNAME_STORE_KEY, username);
   }
 
+  getToken() {
+    return this.NodetoStorageService.get(this.AUTH_USER_TOKEN_STORE_KEY);
+  }
 }

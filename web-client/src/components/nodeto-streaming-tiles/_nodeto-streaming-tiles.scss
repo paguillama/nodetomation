@@ -1,12 +1,11 @@
 .nodeto-streaming-tiles__streaming-row {
+  margin: 0;
 
   .nodeto-streaming-tiles__streaming-column {
-    padding-bottom: $grid-gutter-width;
-  }
+    padding: 0;
 
-  &:last-child {
-    .nodeto-streaming-tiles__streaming-column {
-      padding-bottom: 0;
+    .nodeto-video-streaming .nodeto-video-streaming__img {
+      border-radius: 0;
     }
   }
 }

@@ -5,14 +5,13 @@ export default class NodetoStreamingController {
     };
 
     NodetoStreamingService.getAll()
-      .then(streaming => this.tiles.data = streaming.map(configMapper))
+      .then(streaming => {
+        this.tiles.data = streaming.map(streamingItem => {
+          return {
+            videoUrl: NodetoStreamingService.getVideoUrl(streamingItem.key)
+          };
+        });
+      })
       .catch(() => this.tiles.data = null);
   }
-}
-
-function configMapper (streamingItem) {
-  return {
-    streamingId: streamingItem.key
-    // expand: false
-  };
 }

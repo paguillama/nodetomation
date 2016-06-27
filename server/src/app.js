@@ -8,6 +8,7 @@ let express = require('express'),
   expressJwt = require('express-jwt');
 
 let config = require('./config'),
+  appConfig = config.setEnvironment(process.env.NODE_ENV),
   routes = require('./routes'),
   logService = require('./services/log-service'),
   dataAccess = require('./data-access'),
@@ -21,8 +22,6 @@ let config = require('./config'),
 
 let app = express();
 
-let appConfig = config.setEnvironment(app.get('env'));
-
 let staticPath = path.join(__dirname, appConfig.routing.staticPath);
 
 app.use(favicon(path.join(staticPath, '/assets/favicon.ico')));
@@ -35,7 +34,8 @@ app.use(expressJwt({
   '/',
   /^\/assets\//,
   /^\/fonts\//,
-  '/api/v1/login'
+  '/api/v1/login',
+  /^\/streaming\//
 ]}));
 
 let routeKeys = Object.keys(routes);

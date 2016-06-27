@@ -32,6 +32,7 @@
     "johnny-five": "^0.9.50",
     "jsonwebtoken": "5.7.0",
     "merge": "^1.2.0",
+    "mjpeg-proxy": "^0.2.0",
     "moment": "^2.10.3",
     "mongodb": "2.0.45",
     "node-shutdown-manager": "^0.1.2",
