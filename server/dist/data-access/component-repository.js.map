@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/data-access/component-repository.js"],"names":[],"mappings":"AAAA;;AAEA,OAAO,OAAP,GAAiB,QAAQ,kBAAR,EAA4B,YAA5B,CAAjB","file":"component-repository.js","sourcesContent":["'use strict';\n\nmodule.exports = require('./common-factory')('components');"]}

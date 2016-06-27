@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/services/log-service/transports/console.js"],"names":[],"mappings":"AAAA;;AAEA,OAAO,OAAP,GAAiB;AACf,oBAAkB,QAAQ,SAAR,EAAmB,UAAnB,CAA8B;AADjC,CAAjB","file":"console.js","sourcesContent":["'use strict';\n\nmodule.exports = {\n  winstonTransport: require('winston').transports.Console\n};\n"]}

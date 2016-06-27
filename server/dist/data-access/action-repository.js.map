@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/data-access/action-repository.js"],"names":[],"mappings":"AAAA;;AAEA,OAAO,OAAP,GAAiB,QAAQ,kBAAR,EAA4B,SAA5B,CAAjB","file":"action-repository.js","sourcesContent":["'use strict';\n\nmodule.exports = require('./common-factory')('actions');"]}

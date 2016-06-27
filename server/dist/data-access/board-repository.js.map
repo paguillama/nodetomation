@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/data-access/board-repository.js"],"names":[],"mappings":"AAAA;;AAEA,OAAO,OAAP,GAAiB,QAAQ,kBAAR,EAA4B,QAA5B,CAAjB","file":"board-repository.js","sourcesContent":["'use strict';\n\nmodule.exports = require('./common-factory')('boards');"]}

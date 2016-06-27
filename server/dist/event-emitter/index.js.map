@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/event-emitter/index.js"],"names":[],"mappings":"AAAA;;AAEA,IAAI,SAAS,QAAQ,QAAR,CAAb;;AAEA,OAAO,OAAP,GAAiB,IAAI,OAAO,YAAX,EAAjB","file":"index.js","sourcesContent":["'use strict';\n\nlet events = require('events');\n\nmodule.exports = new events.EventEmitter();"]}
