@@ -61,6 +61,8 @@ app.use(function (err, req, res, next) {
   });
 });
 
+systemService.addShutdownAction(() => logService.info('Received kill signal'));
+
 dataAccess.connect(appConfig.dataAccess.host).then(() => {
   boardService.load()
     .then(authenticationService.load)
@@ -68,12 +70,9 @@ dataAccess.connect(appConfig.dataAccess.host).then(() => {
     .then(actionService.load)
     .then(scheduleService.load)
     .then(eventService.load)
-    .then(dataAccess.close)
-    .catch(err => {
-      logService.error('Error loading the system: ', err);
-    });
-});
+    .catch(err => logService.error('Error loading the system: ', err));
 
-systemService.addShutdownAction(() => logService.info('Received kill signal'));
+  systemService.addShutdownAction(dataAccess.close);
+});
 
 module.exports = app;

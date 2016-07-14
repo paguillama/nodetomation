@@ -7,11 +7,7 @@ let components = {};
 
 function load (setup) {
   if(Object.prototype.toString.call(setup) === '[object Array]' ) {
-    let promises = [];
-    for (let setupItem of setup) {
-      promises.push(loadItem(setupItem));
-    }
-    return Promise.all(promises);
+    return Promise.all(setup.map(setupItem => loadItem(setupItem)));
   } else {
     return loadItem(setup);
   }
@@ -27,13 +23,13 @@ function loadItem (setup) {
     });
   }
 
-  logService.debug('Light loaded: ' + setup.key);
   components[setup.key] = {
     key: setup.key,
     name: setup.name,
     hardwareComponent: new Light(setup),
     coordinates: setup.coordinates
   };
+  logService.debug('Light loaded: ' + setup.key);
   return get(setup.key);
 }
 

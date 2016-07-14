@@ -8,11 +8,7 @@ let components = {};
 
 function load (setup) {
   if(Object.prototype.toString.call(setup) === '[object Array]' ) {
-    let promises = [];
-    for (let setupItem of setup) {
-      promises.push(loadItem(setupItem));
-    }
-    return Promise.all(promises);
+    return Promise.all(setup.map(setupItem => loadItem(setupItem)));
   } else {
     return loadItem(setup);
   }

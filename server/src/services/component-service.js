@@ -3,6 +3,7 @@
 let logService = require('./log-service'),
   eventEmitter = require('../event-emitter'),
   componentRepository = require('../data-access/component-repository'),
+  boardService = require('./board-service'),
   liveCommunicationService = require('./live-communication-service');
 
 let servicesMap = {
@@ -42,13 +43,10 @@ function load () {
   return new Promise((resolve, reject) => {
     componentRepository.getAll()
       .then(components => {
-        let promises = components.map(component => {
-          return loadComponent(component);
-        });
+        let promises = components.map(component => loadComponent(component));
         Promise.all(promises)
           .then(componentData => {
             emitComponentChange();
-
             resolve(componentData);
           })
           .catch(reject);
@@ -58,23 +56,36 @@ function load () {
 }
 
 function loadComponent (setup) {
-  logService.debug('Loading ' + setup.key);
-  let service = servicesMap[setup.typeKey];
-  if (!service) {
-    return Promise.reject('Component type key not found: ' + setup.typeKey);
-  }
+  return new Promise((resolve, reject) => {
+    logService.debug(`Loading component: ${setup.key}`);
+    let service = servicesMap[setup.typeKey];
+    if (!service) {
+      return reject(`Component type key not found: ${setup.typeKey}`);
+    }
 
-  return service.load(setup).then(data => {
-    componentsKeyServiceMap[setup.key] = setup.typeKey;
-    componentKeys.push(setup.key);
-    return data;
+    if (setup.board) {
+      if (!boardService.boardsMap[setup.board]) {
+        let message = `Board not found: ${setup.board}`;
+        logService.debug(message);
+        return reject(message);
+      }
+      setup.board = boardService.boardsMap[setup.board];
+    }
+
+    service.load(setup)
+      .then(data => {
+        componentsKeyServiceMap[setup.key] = setup.typeKey;
+        componentKeys.push(setup.key);
+        resolve(data);
+      })
+      .catch(reject);
   });
 }
 
 function action (componentKey, actionKey, actionOptions) {
   let typeKey = componentsKeyServiceMap[componentKey];
   if (!typeKey) {
-    let errorMessage = 'Component key not found: ' + componentKey;
+    let errorMessage = `Component key not found: ${componentKey}`;
     logService.error(errorMessage);
     return Promise.reject({
       code: 'NOTFOUND',
@@ -82,7 +93,7 @@ function action (componentKey, actionKey, actionOptions) {
     });
   }
   if (!servicesMap[typeKey].actions[actionKey]) {
-    let errorMessage = 'Action key ' + actionKey + ' not found for component key ' + componentKey;
+    let errorMessage = `Action key ${actionKey} not found for component key ${componentKey}`;
     logService.error(errorMessage);
     return Promise.reject({
       code: 'NOTFOUND',
@@ -96,7 +107,7 @@ function action (componentKey, actionKey, actionOptions) {
 function event (componentKey, eventKey, config) {
   let typeKey = componentsKeyServiceMap[componentKey];
   if (!typeKey) {
-    let errorMessage = 'Component key not found: ' + componentKey;
+    let errorMessage = `Component key not found: ${componentKey}`;
     logService.error(errorMessage);
     return Promise.reject({
       code: 'NOTFOUND',
@@ -104,7 +115,7 @@ function event (componentKey, eventKey, config) {
     });
   }
   if (!servicesMap[typeKey].events[eventKey]) {
-    let errorMessage = 'Event key ' + eventKey + ' not found for component key ' + componentKey;
+    let errorMessage = `Event key ${eventKey} not found for component key ${componentKey}`;
     logService.error(errorMessage);
     return Promise.reject({
       code: 'NOTFOUND',

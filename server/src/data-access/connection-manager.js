@@ -1,6 +1,7 @@
 'use strict';
 
 let MongoClient = require('mongodb').MongoClient,
+  logService = require('../services/log-service'),
   dbManager = require('./db-manager');
 
 let manager = {
@@ -28,12 +29,15 @@ function connect (connectionString) {
 }
 
 function closeConnection () {
+  logService.debug('Closing database connection');
   return new Promise((resolve, reject) => {
     delete dbManager.db;
     connectedMongoClient.close(err => {
       if (err) {
+        logService.error('Error closing database connection', err);
         reject();
       } else {
+        logService.debug('Database connection closed');
         connectedMongoClient = null;
         resolve();
       }
