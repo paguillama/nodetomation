@@ -43,7 +43,7 @@ export default class NodetoScheduleService {
    * @returns {Promise} Promise with the result of the update
    */
   update (schedule) {
-    return this.$http.post(this.apiUrl + schedule.key, schedule)
+    return this.$http.put(this.apiUrl + schedule.key, schedule)
       .then(res => res.data);
   }
 

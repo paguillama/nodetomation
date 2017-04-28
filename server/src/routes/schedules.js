@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
           error => res.sendStatus(getErrorStatus(error.code)));
 });
 
-router.post('/:key', (req, res) => {
+router.put('/:key', (req, res) => {
   req.body.key = req.params.key;
   scheduleService
     .update(req.body)
@@ -38,7 +38,7 @@ router.delete('/:key', (req, res) => {
           error => res.sendStatus(getErrorStatus(error.code)));
 });
 
-router.put('/:key', (req, res) => {
+router.post('/:key', (req, res) => {
   req.body.key = req.params.key;
   scheduleService
     .add(req.body)
