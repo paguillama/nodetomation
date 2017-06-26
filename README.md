@@ -1,6 +1,8 @@
 # Nodetomation [![Build Status](https://circleci.com/gh/paguillama/nodetomation.svg?style=shield)](https://circleci.com/gh/paguillama/nodetomation)
 A Node.js automation system for Raspberry Pi & Arduino.
 
+## This project is no longer maintained
+
 ## Description
 Nodetomation is an open source system that automates components actions based on events.
 
